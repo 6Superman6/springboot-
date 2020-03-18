@@ -12,7 +12,7 @@ public enum ResponseCode {
      * 一般错误
      */
 
-    ERROR(-1, "ERROR"),
+    ERROR(1, "ERROR"),
 
     /**
      * 权限不足

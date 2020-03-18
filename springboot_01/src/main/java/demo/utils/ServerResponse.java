@@ -11,7 +11,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ServerResponse<T> implements Serializable {
     private int status;
-    private String msg = "";
+    private String msg;
     private T data;
     private List<T> list;
 
@@ -21,6 +21,30 @@ public class ServerResponse<T> implements Serializable {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
     }
 
     private ServerResponse(int status) {
@@ -89,6 +113,14 @@ public class ServerResponse<T> implements Serializable {
         return new ServerResponse<>(ResponseCode.ERROR.getStatus(), msg);
     }
 
+    public static <T> ServerResponse<T> createByError(T data) {
+        return new ServerResponse<>(ResponseCode.ERROR.getStatus(), data);
+    }
+
+    public static <T> ServerResponse<T> createByError(List<T> list) {
+        return new ServerResponse<>(ResponseCode.ERROR.getStatus(), list);
+    }
+
     public static <T> ServerResponse<T> createByError(int status, String msg) {
         return new ServerResponse<>(status, msg);
     }
@@ -115,6 +147,22 @@ public class ServerResponse<T> implements Serializable {
 
     public static <T> ServerResponse<T> createByErrorMsg3(int status, String msg) {
         return new ServerResponse<>(status, msg);
+    }
+
+    @Override
+    public String toString() {
+        return "ServerResponse{" +
+                "status=" + status +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                ", list=" + list +
+                '}';
+    }
+
+    public static void main(String[] args)
+    {
+        Integer a = 10;
+        System.out.println(ServerResponse.createBySuccess(a));
     }
 
 }

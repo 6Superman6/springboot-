@@ -2,8 +2,6 @@ package demo.service.base;
 
 import demo.utils.ServerResponse;
 
-import java.util.List;
-
 public interface BaseService<T> {
 
     public ServerResponse insert(T t);

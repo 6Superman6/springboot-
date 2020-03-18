@@ -4,8 +4,6 @@ import demo.model.User;
 import demo.service.UserService;
 import demo.service.base.BaseServiceImpl;
 import demo.utils.ServerResponse;
-import jdk.nashorn.internal.runtime.ECMAException;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
